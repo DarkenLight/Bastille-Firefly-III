@@ -12,3 +12,5 @@ SYSRC php_fpm_enable=YES
 SERVICE mysql-server start
 SERVICE php-fpm start
 SERVICE nginx start
+CP /usr
+SERVICE nginx restart
