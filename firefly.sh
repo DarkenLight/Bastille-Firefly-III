@@ -6,7 +6,7 @@ envfile_path="$project_home/$project_name/.env"
 project_user="www"
 project_group=$project_user
 
-echo "Installing Firefly-III at $project_home"
+echo "Installing $project_name at $project_home"
 
 cd $project_home/
 composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist $project_name
