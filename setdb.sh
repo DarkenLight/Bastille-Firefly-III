@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-project_home="/usr/local/www"
-envfile_path="$project_home/firefly-iii/.env"
+project_name="firefli-iii"
+project_dir="/usr/local/www"
+envfile_path="$project_dir/$project_name/.env"
 project_user=www
 project_group=$project_user
 
-echo "Installing Firefly-III at $project_home"
-cd $project_home/
+echo "Installing Firefly-III at $project_dir"
+cd $project_dir/
 composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
-chmod $project_user:$project_group $project_hom
+chmod $project_user:$project_group $project_dir/$project_name
 
 clear
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
@@ -49,6 +50,7 @@ find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_passwor
 echo "Installation Successful"
 echo ""
 echo "Setting Up Database"
+cd $project_name/
 php artisan migrate:refresh --seed
 php artisan firefly-iii:upgrade-database
 php artisan passport:install
