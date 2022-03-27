@@ -3,6 +3,10 @@
 project_home="/usr/local/www"
 envfile_path="$project_home/firefly-iii/.env"
 
+echo "Installing Firefly-III at $project_home"
+cd $project_home/
+composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
+
 clear
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "  ______  _____  _____   ______  ______  _   __     __     _____  _____  _____ "
@@ -14,7 +18,7 @@ echo " |_|     |_____||_|  \_\|______||_|     |______||_|       |_____||_____||_
 echo "                                                                               "
 echo "                                                                               "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-echo "                 MANAGE THE FIREFLY-III DATABASE CREDENTIALS                   "
+echo "                 MANAGE THE FIREFLY-III SCRIPTED INSTALLER                     "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 echo "Enter Database Hostname or IP Address: "
@@ -34,7 +38,9 @@ echo "DB_USERNAME = $db_username"
 echo "DB_PASSWORD = $db_password"
 echo "=============================="
 
-find /usr/local/www/firefly-iii/.env -type f -exec sed -i '' -e "/^DB_HOST=/s/=.*/=$db_hostname/" {} \;
-find /usr/local/www/firefly-iii/.env -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=$db_name/" {} \;
-find /usr/local/www/firefly-iii/.env -type f -exec sed -i '' -e "/^DB_USERNAME=/s/=.*/=$db_username/" {} \;
-find /usr/local/www/firefly-iii/.env -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_password/" {} \;
+find $envfile_path -type f -exec sed -i '' -e "/^DB_HOST=/s/=.*/=$db_hostname/" {} \;
+find $envfile_path -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=$db_name/" {} \;
+find $envfile_path -type f -exec sed -i '' -e "/^DB_USERNAME=/s/=.*/=$db_username/" {} \;
+find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_password/" {} \;
+
+echo "Installation Successful"
