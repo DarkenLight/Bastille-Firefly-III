@@ -24,6 +24,13 @@ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "                    MANAGED FIREFLY-III SCRIPTED INSTALLER                     "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
+read -p "Do you want to Install the Database server as well?? Enter \"N\" if you have database server running." -n 1 -r
+echo  # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo  "WILL BE ADDED IN THE FUTURE"
+fi
+
 echo "Enter Database Hostname or IP Address: "
 read db_hostname
 echo "Enter Database Name: "
@@ -52,7 +59,6 @@ echo
 
 read -p "Do you want to initialize the Database Now??" -n 1 -r
 echo  # (optional) move to a new line
-
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   read -p "This will Erase all the data from the Database? Are you Sure?" -n 1 -r
