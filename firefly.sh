@@ -70,5 +70,5 @@ else
   cd $project_name
   composer update
 fi
-chmod $project_user:$project_group $project_home/$project_name
+chown $project_user:$project_group $project_home/$project_name
 echo "Setup complete"
