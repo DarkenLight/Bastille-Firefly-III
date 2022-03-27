@@ -23,6 +23,8 @@ echo "                                                                          
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "                    MANAGED FIREFLY-III SCRIPTED INSTALLER                     "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo
+echo
 
 read -p "Do you want to Install the Database server as well?? Enter \"N\" if you have database server running." -n 1 -r
 echo  # (optional) move to a new line
