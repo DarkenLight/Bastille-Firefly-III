@@ -5,7 +5,6 @@ CMD echo 'pcre.jit=0' >> /usr/local/etc/php.ini
 CMD curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 CMD chown -R www:www /usr/local/www
 CP firefly.sh /root
-CMD chmod +x firefly.sh && ./firefly.sh
 SYSRC mysql_enable=YES
 SYSRC nginx_enable=YES
 SYSRC php_fpm_enable=YES
@@ -14,3 +13,4 @@ SERVICE php-fpm start
 SERVICE nginx start
 CP /usr /
 SERVICE nginx restart
+CMD chmod +x firefly.sh && ./firefly.sh
