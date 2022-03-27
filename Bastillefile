@@ -5,12 +5,13 @@ CMD echo 'pcre.jit=0' >> /usr/local/etc/php.ini
 CMD curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 CMD chown -R www:www /usr/local/www
 CMD cd /usr/local/www && composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
-CP setdb.sh
+CP setdb.sh /root
+CMD chmod +x setdb.sh && ./setdb.sh
 SYSRC mysql_enable=YES
 SYSRC nginx_enable=YES
 SYSRC php_fpm_enable=YES
 SERVICE mysql-server start
 SERVICE php-fpm start
 SERVICE nginx start
-CP /usr
+CP /usr /
 SERVICE nginx restart
