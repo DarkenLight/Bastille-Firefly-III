@@ -16,9 +16,8 @@ echo " |  __|    | |  |  _  / |  __|  |  __|  | |    \   /|______|| |    | |    
 echo " | |      _| |_ | | \ \ | |____ | |     | |____ | |        _| |_  _| |_  _| |_ "
 echo " |_|     |_____||_|  \_\|______||_|     |______||_|       |_____||_____||_____|"
 echo "                                                                               "
-echo "                                                                               "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-echo "                 MANAGE THE FIREFLY-III SCRIPTED INSTALLER                     "
+echo "                    MANAGED FIREFLY-III SCRIPTED INSTALLER                     "
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 echo "Enter Database Hostname or IP Address: "
@@ -30,13 +29,14 @@ read db_username
 echo "Enter Database Password: "
 read db_password
 
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "Entered Details are Below"
-echo "=============================="
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "DB_HOSTNAME = $db_hostname"
 echo "DB_DATABASE = $db_name"
 echo "DB_USERNAME = $db_username"
 echo "DB_PASSWORD = $db_password"
-echo "=============================="
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 find $envfile_path -type f -exec sed -i '' -e "/^DB_HOST=/s/=.*/=$db_hostname/" {} \;
 find $envfile_path -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=$db_name/" {} \;
@@ -44,3 +44,8 @@ find $envfile_path -type f -exec sed -i '' -e "/^DB_USERNAME=/s/=.*/=$db_usernam
 find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_password/" {} \;
 
 echo "Installation Successful"
+echo ""
+echo "Setting Up Database"
+php artisan migrate:refresh --seed
+php artisan firefly-iii:upgrade-database
+php artisan passport:install
