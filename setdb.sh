@@ -2,10 +2,13 @@
 
 project_home="/usr/local/www"
 envfile_path="$project_home/firefly-iii/.env"
+project_user=www
+project_group=$project_user
 
 echo "Installing Firefly-III at $project_home"
 cd $project_home/
 composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
+chmod $project_user:$project_group $project_hom
 
 clear
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
