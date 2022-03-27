@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
+project_name="firefly-iii"
 project_home="/usr/local/www"
-envfile_path="$project_home/firefly-iii/.env"
+envfile_path="$project_home/$project_name/.env"
 project_user=www
 project_group=$project_user
 
 echo "Installing Firefly-III at $project_home"
 
 cd $project_home/
-composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
+composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist $project_name
 echo "Installation Successful"
 
 clear
@@ -61,11 +62,11 @@ then
   echo  # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
     then
-    cd firefly-iii
+    cd $project_name
     php artisan migrate:refresh --seed
     php artisan firefly-iii:upgrade-database
     php artisan passport:install
     fi
 fi
-chmod $project_user:$project_group $project_home
+chmod $project_user:$project_group $project_home/$project_name
 echo "Setup complete"
