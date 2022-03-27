@@ -11,6 +11,6 @@ SYSRC php_fpm_enable=YES
 SERVICE mysql-server start
 SERVICE php-fpm start
 SERVICE nginx start
-CP /usr /
+CP nginx.conf /usr/local/etc/nginx
 SERVICE nginx restart
 CMD chmod +x firefly.sh && ./firefly.sh
