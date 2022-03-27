@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
-project_name="firefli-iii"
-project_dir="/usr/local/www"
-envfile_path="$project_dir/$project_name/.env"
+project_home="/usr/local/www"
+envfile_path="$project_home/firefly-iii/.env"
 project_user=www
 project_group=$project_user
 
-echo "Installing Firefly-III at $project_dir"
-cd $project_dir/
+echo "Installing Firefly-III at $project_home"
+
+cd $project_home/
 composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist firefly-iii
-chmod $project_user:$project_group $project_dir/$project_name
+echo "Installation Successful"
 
 clear
+
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "  ______  _____  _____   ______  ______  _   __     __     _____  _____  _____ "
 echo " |  ____||_   _||  __ \ |  ____||  ____|| |  \ \   / /    |_   _||_   _||_   _|"
@@ -47,10 +48,24 @@ find $envfile_path -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=$db_name/" 
 find $envfile_path -type f -exec sed -i '' -e "/^DB_USERNAME=/s/=.*/=$db_username/" {} \;
 find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_password/" {} \;
 
-echo "Installation Successful"
-echo ""
-echo "Setting Up Database"
-cd $project_name/
-php artisan migrate:refresh --seed
-php artisan firefly-iii:upgrade-database
-php artisan passport:install
+echo "Database Connection Complete"
+echo
+echo
+
+read -p "Do you want to initialize the Database Now??" -n 1 -r
+echo  # (optional) move to a new line
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  read -p "This will Erase all the data from the Database? Are you Sure?" -n 1 -r
+  echo  # (optional) move to a new line
+  if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+    cd firefly-iii
+    php artisan migrate:refresh --seed
+    php artisan firefly-iii:upgrade-database
+    php artisan passport:install
+    fi
+fi
+chmod $project_user:$project_group $project_home
+echo "Setup complete"
