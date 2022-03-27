@@ -51,7 +51,6 @@ find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_passwor
 
 echo "Database Connection Complete"
 echo
-echo
 
 read -p "Do you want to initialize the Database Now??" -n 1 -r
 echo  # (optional) move to a new line
@@ -67,6 +66,9 @@ then
     php artisan firefly-iii:upgrade-database
     php artisan passport:install
     fi
+else
+  cd $project_name
+  composer update
 fi
 chmod $project_user:$project_group $project_home/$project_name
 echo "Setup complete"
