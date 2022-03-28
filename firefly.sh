@@ -12,6 +12,8 @@ cd $project_home/
 composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist $project_name
 echo "Installation Successful"
 
+clear
+
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "  ______  _____  _____   ______  ______  _   __     __     _____  _____  _____ "
 echo " |  ____||_   _||  __ \ |  ____||  ____|| |  \ \   / /    |_   _||_   _||_   _|"
