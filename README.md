@@ -7,7 +7,7 @@ Installation overview using XigmanasNAS Bastille Extension Gui
 
 2. Click ADD [+] button
 
-3. Name (any name will work): fireflyIII
+3. Name (any name will work): firefly-iii
 
 4. Configure Network Properties to your liking
 
@@ -35,7 +35,7 @@ Installation overview using XigmanasNAS Bastille Extension Gui
 `bastille bootstrap https://github.com/DarkenLight/Bastille-Firefly-III`
 
 3. Apply the Template to the TARGATE jail.
-`bastille template fireflyIII DarkenLight/Bastille-Firefly-III`
+`bastille template firefly-iii DarkenLight/Bastille-Firefly-III`
 
 
 ## Thanks to firefly-iii Developer
