@@ -36,13 +36,13 @@ then
 fi
 
 echo "Enter Database Hostname or IP Address: "
-read db_hostname
+read -p ">>" db_hostname
 echo "Enter Database Name: "
-read db_name
+read -p ">>" db_name
 echo "Enter Database Username: "
-read db_username
+read -p ">>" db_username
 echo "Enter Database Password: "
-read db_password
+read -p ">>" db_password
 
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo "Entered Details are Below"
