@@ -14,7 +14,6 @@ SYSRC nginx_enable=YES
 SYSRC php_fpm_enable=YES
 SERVICE mysql-server start
 SERVICE php-fpm start
-SERVICE nginx start
 CP nginx.conf /usr/local/etc/nginx
-SERVICE nginx restart
+SERVICE nginx start
 CMD chmod +x config.sh && ./config.sh
