@@ -51,13 +51,13 @@ echo "DB_HOSTNAME = $db_hostname"
 echo "DB_DATABASE = $db_name"
 echo "DB_USERNAME = $db_username"
 echo "DB_PASSWORD = $db_password"
+echo "DB_PASSWORD = $app_key"
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 find $envfile_path -type f -exec sed -i '' -e "/^DB_HOST=/s/=.*/=$db_hostname/" {} \;
 find $envfile_path -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=$db_name/" {} \;
 find $envfile_path -type f -exec sed -i '' -e "/^DB_USERNAME=/s/=.*/=$db_username/" {} \;
 find $envfile_path -type f -exec sed -i '' -e "/^DB_PASSWORD=/s/=.*/=$db_password/" {} \;
-
 echo "Database Connection Complete"
 echo
 
@@ -75,6 +75,10 @@ then
     php artisan passport:install
     fi
 else
+  echo "Enter API KEY: "
+  read -p ">>" app_key
+  echo "DB_PASSWORD = $app_key"
+  find $envfile_path -type f -exec sed -i '' -e "/^APP_KEY=/s/=.*/=$app_key/" {} \;
   cd $project_name
   composer update
 fi
