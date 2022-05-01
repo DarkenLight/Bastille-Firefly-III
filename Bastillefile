@@ -1,5 +1,5 @@
 PKG nginx curl mysql80-client sudo bash nano
-PKG PKG php80 php80-bcmath php80-curl php80-dom php80-fileinfo php80-filter php80-gd php80-iconv php80-intl php80-ldap php80-mbstring php80-mysqli php80-openssl php80-pdo php80-pdo_mysql php80-pear php80-pear-MDB2 php80-pear-MDB2_Driver_mysqli php80-phar php80-session php80-simplexml php80-tokenizer php80-xml php80-zip php80-zlib php80-xmlwriter php80-sodium
+PKG PKG php80 php80-bcmath php80-curl php80-dom php80-fileinfo php80-filter php80-gd php80-iconv php80-intl php80-ldap php80-mbstring php80-mysqli php80-pdo php80-pdo_mysql php80-pear php80-pear-MDB2 php80-pear-MDB2_Driver_mysqli php80-phar php80-session php80-simplexml php80-tokenizer php80-xml php80-zip php80-zlib php80-xmlwriter php80-sodium
 CMD cp /usr/local/etc/php.ini-development /usr/local/etc/php.ini
 CMD echo 'pcre.jit=0' >> /usr/local/etc/php.ini
 CMD echo 'listen = /var/run/php-fpm.sock' >> /usr/local/etc/php-fpm.conf
