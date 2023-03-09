@@ -1,4 +1,4 @@
-PKG nginx curl mysql82-client sudo bash nano php82
+PKG nginx curl mysql80-client sudo bash nano php82
 PKG php82-bcmath php82-curl php82-dom php82-fileinfo php82-filter php82-gd php82-iconv php82-intl php82-ldap php82-mbstring php82-mysqli php82-pdo php82-pdo_mysql php82-pear php82-pear-MDB2 php82-pear-MDB2_Driver_mysqli php82-phar php82-session php82-simplexml php82-tokenizer php82-xml php82-zip php82-zlib php82-xmlwriter php82-sodium
 CMD cp /usr/local/etc/php.ini-development /usr/local/etc/php.ini
 CMD echo 'pcre.jit=0' >> /usr/local/etc/php.ini
