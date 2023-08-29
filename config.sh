@@ -9,7 +9,7 @@ project_group=$project_user
 echo "Installing $project_name at $project_home"
 
 cd $project_home/
-composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist $project_name 6.0.0
+composer create-project grumpydictator/firefly-iii --no-dev --prefer-dist $project_name 6.0.20
 echo "Installation Successful"
 
 clear
