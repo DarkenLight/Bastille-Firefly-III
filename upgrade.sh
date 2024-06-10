@@ -7,14 +7,14 @@ envfile_path="$project_path/.env"
 project_user="www"
 project_group=$project_user
 release_version="v6.1.16"
-release_url="https://github.com/firefly-iii/firefly-iii/releases/download/$release_version/FireflyIII-$release_versi>archive_name="FireflyIII-$release_version.tar.gz"
-
+release_url="https://github.com/firefly-iii/firefly-iii/releases/download/$release_version/FireflyIII-$release_version.tar.gz"
+archive_name="FireflyIII-$release_version.tar.gz"
 
 echo "preparing $project_name for upgrade"
 cd $project_path
 php artisan cache:clear
 php artisan view:clear
-cd
+cd ~
 
 echo "Upgrading by pulling the remote repository $project_name"
 fetch -o $archive_name $release_url
