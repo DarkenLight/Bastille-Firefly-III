@@ -6,15 +6,17 @@ project_path="$project_home/$project_name"
 envfile_path="$project_path/.env"
 project_user="www"
 project_group=$project_user
-release_version="v6.1.16"
+
+# Get the latest release version from GitHub API
+release_version=$(curl -s https://api.github.com/repos/firefly-iii/firefly-iii/releases/latest | grep 'tag_name' | cut -d\" -f4)
 release_url="https://github.com/firefly-iii/firefly-iii/releases/download/$release_version/FireflyIII-$release_version.tar.gz"
 archive_name="FireflyIII-$release_version.tar.gz"
 
-echo "preparing $project_name for upgrade"
+echo "Preparing $project_name for upgrade"
 cd $project_path
 php artisan cache:clear
 php artisan view:clear
-cd ~
+cd
 
 echo "Upgrading by pulling the remote repository $project_name"
 fetch -o $archive_name $release_url
@@ -50,6 +52,7 @@ php artisan cache:clear
 php artisan view:clear
 
 echo "Cleaning up"
+cd
 rm $archive_name
 
 echo "Upgrade Complete"
