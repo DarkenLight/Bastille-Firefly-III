@@ -68,7 +68,7 @@ check_database_connection() {
   LOCAL_QUERY="SELECT 1;"
 
   # Attempt to connect to the database using the provided credentials
-  if mysql -sN --host="${DB_HOSTNAME}" --user="${DB_USERNAME}" --password="${DB_PASSWORD}" "${LOCAL_QUERY}" > /dev/null; then
+  if mysql -sN --host="${DB_HOSTNAME}" --user="${DB_USERNAME}" --password="${DB_PASSWORD}" --database="${DB_NAME}" -e ${LOCAL_QUERY}" > /dev/null; then
     # If the connection is successful, print a success message and return 0 (true)
     echo "Database connection successful"
     return 0
