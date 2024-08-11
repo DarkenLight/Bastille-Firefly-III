@@ -16,5 +16,5 @@ SERVICE mysql-server start
 SERVICE php-fpm start
 CP nginx.conf /usr/local/etc/nginx
 SERVICE nginx start
-CMD chmod +x config.sh && ./config.sh
+CMD chmod +x install.sh && ./install.sh
 CMD echo '3       0       *       *       *       root    /usr/local/bin/php /usr/local/www/firefly-iii/artisan firefly-iii:cron' >> /etc/crontab
