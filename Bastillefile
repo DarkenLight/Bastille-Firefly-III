@@ -21,3 +21,4 @@ SERVICE nginx start
 CMD chmod +x install.sh && ./install.sh
 CMD chmod +x upgrade.sh
 CMD echo '3       0       *       *       *       root    /usr/local/bin/php /usr/local/www/firefly-iii/artisan firefly-iii:cron' >> /etc/crontab
+CMD echo "Install complete, to upgrade use script upgrade.sh"
