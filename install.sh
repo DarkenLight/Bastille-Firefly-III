@@ -25,7 +25,7 @@ echo "Installing by pulling the remote repository $PROJECT_NAME $RELEASE_VERSION
 fetch -o $ARCHIVE_NAME $RELEASE_URL
 
 echo "Extracting the archive with the new release at $PROJECT_PATH"
-tar -xvf $ARCHIVE_NAME -C $PROJECT_PATH --strip-components=1
+tar -xf $ARCHIVE_NAME -C $PROJECT_PATH --strip-components=1
 
 # Create a .env file and store the credentials
 cp $PROJECT_PATH/.env.example $PROJECT_PATH/.env
