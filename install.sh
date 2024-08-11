@@ -27,10 +27,8 @@ fetch -o $ARCHIVE_NAME $RELEASE_URL
 echo "Extracting the archive with the new release at $PROJECT_PATH"
 tar -xvf $ARCHIVE_NAME -C $PROJECT_PATH --strip-components=1 --exclude='storage'
 
-echo "Copying config & Storage from the old version"
-echo "Copying .env file"
-cp $PROJECT_PATH-old/.env $PROJECT_PATH/.env
-
+# Create a .env file and store the credentials
+cp $PROJECT_PATH/.env.example $PROJECT_PATH/.env
 
 # Prompt the user for input
 read -p "Do you want to install the database server as well? (yes/no): " -n 1 -r REPLY
@@ -89,9 +87,6 @@ fi
 
 # Print a success message indicating that the database connection is established
 echo "Database connection established. Proceeding with script execution..."
-
-# Create a .env file and store the credentials
-cp $PROJECT_PATH/.env.example $PROJECT_PATH/.env
 
 # Update the .env files to include the provided database credentials
 find $PROJECT_PATH/.env -type f -exec sed -i '' -e "/^DB_HOST=/s/=.*/=${DB_HOSTNAME}/" {} \;
