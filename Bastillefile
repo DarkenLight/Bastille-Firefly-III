@@ -10,7 +10,6 @@ CMD curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/
 CMD chown -R www:www /usr/local/www
 CP install.sh /root
 CP upgrade.sh /root
-CP config.sh /root
 SYSRC mysql_enable=YES
 SYSRC nginx_enable=YES
 SYSRC php_fpm_enable=YES
